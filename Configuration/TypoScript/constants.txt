@@ -1,0 +1,24 @@
+plugin.tx_knentree {
+	view {
+		# cat=plugin.tx_knentree/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:kn_entree/Resources/Private/Templates/
+		# cat=plugin.tx_knentree/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:kn_entree/Resources/Private/Partials/
+		# cat=plugin.tx_knentree/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:kn_entree/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_knentree//a; type=int+; label=Default storage PID
+		storagePid = 74
+	}
+	settings {
+		serviceProviderIdentifier = kennisnet
+		keepPost = 1
+		defaultUserGroup = 7157
+		attributeMapping {
+			username = entree_uid
+			firstName = givenName
+		}
+		terminateT3SessionWhenNoEntreeAuth = 0
+	}
+}

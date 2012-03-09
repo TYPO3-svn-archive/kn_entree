@@ -1,0 +1,13 @@
+<f:layout name="Auth" />
+
+<f:section name="main">
+	<f:security.ifAuthenticated>
+		<f:then>
+			<f:translate key="authenticated" arguments="{0: currentUser.username}" />
+			<f:link.action action="logout"><f:translate key="logout" /></f:link.action>
+		</f:then>
+		<f:else>
+			<f:link.action action="login"><f:translate key="authenticate" /></f:link.action>
+		</f:else>
+	</f:security.ifAuthenticated>
+</f:section>

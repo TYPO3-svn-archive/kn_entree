@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Entree authentication extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="authenticate">Authenticate</label>
+			<label index="error">An error has occured</label>
+			<label index="success">Logged in succesfully</label>
+			<label index="authenticated">Authenticated as %s</label>
+			<label index="logout">Log out</label>
+		</languageKey>
+	</data>
+</T3locallang>

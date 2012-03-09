@@ -1,0 +1,33 @@
+config.tx_extbase.persistence {
+	classes {
+		Tx_KnEntree_Domain_Model_FrontendUser {
+			mapping {
+				tableName = fe_users
+				columns {
+					lockToDomain.mapOnProperty = lockToDomain
+				}
+			}
+		}
+	}
+}
+
+plugin.tx_knentree {
+	view {
+		templateRootPath = {$plugin.tx_knentree.view.templateRootPath}
+		partialRootPath = {$plugin.tx_knentree.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_knentree.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_knentree.persistence.storagePid}
+	}
+	settings {
+		serviceProviderIdentifier = {$plugin.tx_knentree.settings.serviceProviderIdentifier}
+		keepPost = {$plugin.tx_knentree.settings.keepPost}
+		terminateT3SessionWhenNoEntreeAuth = {$plugin.tx_knentree.settings.terminateT3SessionWhenNoEntreeAuth}
+		defaultUserGroup = {$plugin.tx_knentree.settings.defaultUserGroup}
+		attributeMapping {
+			username = {$plugin.tx_knentree.settings.attributeMapping.username}
+			firstName = {$plugin.tx_knentree.settings.attributeMapping.firstName}
+		}
+	}
+}
