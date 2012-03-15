@@ -8,6 +8,14 @@ config.tx_extbase.persistence {
 				}
 			}
 		}
+		Tx_KnEntree_Domain_Model_FrontendUserGroup {
+			mapping {
+				tableName = fe_groups
+				columns {
+					lockToDomain.mapOnProperty = lockToDomain
+				}
+			}
+		}
 	}
 }
 

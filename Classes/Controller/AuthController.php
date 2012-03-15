@@ -17,6 +17,13 @@ class Tx_KnEntree_Controller_AuthController extends Tx_Extbase_MVC_Controller_Ac
 	public $frontendUserRepository;
 
 	/**
+	 * frontendUserGroupRepository
+	 *
+	 * @var Tx_KnEntree_Domain_Repository_FrontendUserGroupRepository
+	 */
+	public $frontendUserGroupRepository;
+
+	/**
 	 * injectAuthService
 	 *
 	 * @param Tx_KnEntree_Service_Authentication $authService
@@ -34,6 +41,16 @@ class Tx_KnEntree_Controller_AuthController extends Tx_Extbase_MVC_Controller_Ac
 	 */
 	public function injectFrontendUserRepository(Tx_KnEntree_Domain_Repository_FrontendUserRepository $frontendUserRepository) {
 		$this->frontendUserRepository = $frontendUserRepository;
+	}
+
+	/**
+	 * frontendUserGroupRepository
+	 *
+	 * @param Tx_KnEntree_Domain_Repository_FrontendUserGroupRepository $frontendUserGroupRepository
+	 * @return void
+	 */
+	public function injectFrontendUserGroupRepository(Tx_KnEntree_Domain_Repository_FrontendUserGroupRepository $frontendUserGroupRepository) {
+		$this->frontendUserGroupRepository = $frontendUserGroupRepository;
 	}
 
 	/**
@@ -145,6 +162,10 @@ class Tx_KnEntree_Controller_AuthController extends Tx_Extbase_MVC_Controller_Ac
 			}
 		}
 
+		$userGroup = $this->frontendUserGroupRepository->findOneByUid($this->settings['defaultUserGroup']);
+		if ($userGroup instanceof Tx_KnEntree_Domain_Model_FrontendUserGroup) {
+			$object->addUsergroup($userGroup);
+		}
 		$object->setPassword(substr(md5($GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey'] . microtime()), 0, 8));
 		$this->frontendUserRepository->add($object);
 		$persistenceManager = t3lib_div::makeInstance('Tx_Extbase_Persistence_Manager');
